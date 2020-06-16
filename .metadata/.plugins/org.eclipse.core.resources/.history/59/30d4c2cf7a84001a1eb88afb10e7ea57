@@ -1,0 +1,110 @@
+package com.javatpoint.Bmodel;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+
+public class PractCode {
+
+	public static void main(String[] args) {
+
+		List<String> list = new ArrayList<String>();
+
+		TreeMap<Integer, Set> map = new TreeMap<Integer, Set>();
+
+		String input = "abcdefghfdsasfdf";
+
+		// first for loop for input length
+		for (int i = 0; i < input.length(); i++) {
+
+			String input1 = input.substring(i);
+
+			String longestSibstring = getSubsString(input1);
+
+			list.add(longestSibstring);
+			
+		}
+			for (String newS : list) {
+
+				int newL = newS.length();
+
+				if (map.containsKey(newL)) {
+
+					Set set1 = (HashSet) map.get(newL);
+
+					set1.add(newS);
+
+					map.put(newL, set1);
+				} else {
+					Set set2 = new HashSet();
+					set2.add(newS);
+					map.put(newL, set2);
+				}
+
+			}
+
+			System.out.println(map.lastKey());
+
+			System.out.println(map.get(map.lastKey()));
+
+		}
+	
+
+	public static String getSubsString(String input) {
+		Set<Character> set = new LinkedHashSet<Character>();
+		String longestString = "";
+		// second loop for substring input1 length
+		for (int j = 0; j < input.length(); j++) {
+
+			
+
+			char ch = input.charAt(j);
+
+			boolean isCharadded = set.add(ch);
+
+			if (isCharadded) {
+
+				if (j == input.length() - 1) {
+
+					String currentStr = getStringfromSet(set);
+
+					if (currentStr.length() > longestString.length()) {
+
+						longestString = currentStr;
+					}
+				}
+				continue;
+			} else {
+				String currentStr = getStringfromSet(set);
+
+				if (currentStr.length() > longestString.length()) {
+
+					longestString = currentStr;
+				}
+				set = new LinkedHashSet<Character>(input.charAt(j));
+			}
+
+		}
+
+		return longestString;
+
+	}
+
+	public static String getStringfromSet(Set set) {
+
+		Object[] o = set.toArray();
+
+		StringBuffer sb = new StringBuffer();
+
+		for (Object obj : o) {
+			sb.append(obj);
+		}
+
+		return sb.toString();
+
+	}
+}

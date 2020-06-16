@@ -1,0 +1,42 @@
+package com.javatpoint.Bmodel;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class BookModel {
+
+	public static void main(String[] args)
+	{
+	String s="xyxyabcdefff";	
+	//allSubString(s);
+	System.out.println("result of find"+find(s));
+	}
+	
+	
+	private static String LongestSubstring(String word)
+    {
+       Set  set = new HashSet<>();
+        String longestOverAll = "";
+        String longestTillNow = "";
+
+        for(char c : set)
+        {
+            if (!set.Contains(c))
+            {
+                longestTillNow += c;
+                set.Add(c);
+            }
+            else
+            {
+                longestTillNow = string.Empty;
+            }
+
+            if (longestTillNow.Length > longestOverAll.Length)
+            {
+                longestOverAll = longestTillNow;
+            }
+        }
+
+        return longestOverAll;
+    }
+}

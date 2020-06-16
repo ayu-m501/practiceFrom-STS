@@ -1,0 +1,9 @@
+package com.javatpoint.service;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class ProvisioCodeShare {
+
+	private static Logger logger = LoggerFactory.getLogger(ProvisioCodeShare.class);
+}

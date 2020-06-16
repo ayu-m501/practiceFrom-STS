@@ -1,0 +1,91 @@
+package com.javatpoint.Bmodel;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+
+public class PractCode {
+
+	public static void main(String[] args) {
+
+		List<String> list = new ArrayList<>();
+
+		TreeMap<Integer, Set> map = new TreeMap<Integer, Set>();
+
+		String longestString = "";
+		
+		String currentStr = "";
+		Set<Character> set = new LinkedHashSet<Character>();
+
+		String input = "abcdefghfdsasfdf";
+
+		// first for loop for input length
+		for (int i = 0; i < input.length(); i++) {
+
+			String input1 = input.substring(i);
+
+			// second loop for substring input1 length
+			for (int j = 0; j < input1.length(); j++) {
+
+				
+
+				char ch = input1.charAt(j);
+
+				boolean isCharadded = set.add(ch);
+
+				if (isCharadded) {
+
+					if (j == input1.length() - 1) {
+						Object[] o = set.toArray();
+
+						StringBuffer sb = new StringBuffer();
+
+						for (Object obj : o) {
+							sb.append(obj);
+						}
+
+					 currentStr = sb.toString();
+
+						if (currentStr.length() > longestString.length()) {
+
+							longestString = currentStr;
+						}
+					} 
+				}
+				
+			}
+			longestString = currentStr;
+			list.add(longestString);
+
+		}
+
+		for (String newS : list) {
+
+			int newL = newS.length();
+
+			if (map.containsKey(newL)) {
+
+				Set set1 = (HashSet) map.get(newL);
+
+				set1.add(newS);
+
+				map.put(newL, set1);
+			} else {
+				Set set2 = new HashSet();
+				set2.add(newS);
+				map.put(newL, set2);
+			}
+
+		}
+
+		System.out.println(((TreeMap<Integer, Set>) map).lastKey());
+
+		System.out.println(map.get(((TreeMap<Integer, Set>) map).lastKey()));
+
+	}
+
+}

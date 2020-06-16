@@ -1,0 +1,16 @@
+package com.javatpoint.model;
+
+public class ProvisoCodeShareModel {
+
+	private String codeShare;
+
+	public String getCodeShare() {
+		return codeShare;
+	}
+
+	public void setCodeShare(String codeShare) {
+		this.codeShare = codeShare;
+	}
+	
+	
+}

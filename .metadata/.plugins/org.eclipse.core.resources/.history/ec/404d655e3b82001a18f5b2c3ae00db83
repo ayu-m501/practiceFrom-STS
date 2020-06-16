@@ -1,0 +1,31 @@
+package com.javatpoint.Bmodel;
+
+import java.util.ArrayList;
+
+
+
+public class BookModel {
+
+	public static void main(String[] args) {
+
+		ArrayList<Integer> value = new ArrayList<Integer>();
+
+		int[] num = { 7, 8, 5, 6, 3 };
+
+		for (int i = 0; i < num.length ; i++) {
+			value.add(num[i]);
+		}
+		
+		printEven(value);
+		
+		}
+public static void printEven(ArrayList<Integer> list) {
+		
+	for(int i = 0; i < list.size(); i++) {
+		if(i % 2 == 0) {
+			System.out.println(list.get(i));
+		}
+	}
+	}
+	
+}

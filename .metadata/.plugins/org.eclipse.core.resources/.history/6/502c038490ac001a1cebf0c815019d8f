@@ -1,0 +1,45 @@
+package com.javatpoint.service;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.javatpoint.exception.KeyToken;
+import com.javatpoint.model.ATBPCoupon;
+import com.javatpoint.model.EnrichedATBP;
+
+public class ProvisioCodeShare {
+
+	private static Logger logger = LoggerFactory.getLogger(ProvisioCodeShare.class);
+
+	public EnrichedATBP setProvisioCodeShare(EnrichedATBP enrichedATBP) {
+
+		logger.debug("section a,b started");
+
+		int atbpCount = 0;
+
+		List<ATBPCoupon> atbpCouponList = enrichedATBP.getListOfcoupon();
+
+		for (int i = 0; i < atbpCouponList.size(); i++) {
+
+			Boolean singleAtbpFlag = false;
+			atbpCount++;
+			if (atbpCouponList.get(i).getAtbpValue() != null && atbpCount == 1) {
+				singleAtbpFlag = true;
+			}
+
+			if (!checkValidCoupon(enrichedATBP, i)) {
+
+			}
+		}
+	}
+
+	public boolean checkValidCoupon(EnrichedATBP enrichedATBP, int i) {
+
+		return (enrichedATBP.getTicketLevelInfo().getTicketIndicator().equals(KeyToken.INVOL_TICKET)
+				&& enrichedATBP.getListOfcoupon().get(i).getCouponType() != null
+				&& enrichedATBP.getListOfcoupon().get(i).getCouponType().equals(KeyToken.Y_COUPON));
+
+	}
+}

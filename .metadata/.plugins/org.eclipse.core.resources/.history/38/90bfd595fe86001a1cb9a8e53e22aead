@@ -1,0 +1,28 @@
+package com.javatpoint.Bmodel;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class PractCode {
+
+	public static void main(String[] args) 
+    {
+    
+		Integer[] numbers = new Integer[] {1,2,3,4,5,1,3,5};
+		
+		LinkedHashSet<Integer> lhashset = new LinkedHashSet<Integer>(Arrays.asList(numbers));
+		
+		for( Integer num: lhashset) {
+			System.out.println(num);
+		}
+				}
+
+	}

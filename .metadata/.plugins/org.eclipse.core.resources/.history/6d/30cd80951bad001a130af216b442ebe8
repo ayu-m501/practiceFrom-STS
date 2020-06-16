@@ -1,0 +1,25 @@
+package com.javatpoint.model;
+
+public class ProvisoMainModel {
+
+	private String cxrCOde;
+
+	private int provisoSequenceNumber;
+
+	public int getProvisoSequenceNumber() {
+		return provisoSequenceNumber;
+	}
+
+	public void setProvisoSequenceNumber(int provisoSequenceNumber) {
+		this.provisoSequenceNumber = provisoSequenceNumber;
+	}
+
+	public String getCxrCOde() {
+		return cxrCOde;
+	}
+
+	public void setCxrCOde(String cxrCOde) {
+		this.cxrCOde = cxrCOde;
+	}
+
+}

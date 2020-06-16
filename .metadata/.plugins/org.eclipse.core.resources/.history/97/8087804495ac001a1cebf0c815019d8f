@@ -1,0 +1,16 @@
+package com.javatpoint.model;
+
+public class FareBasisTranslation {
+
+	private String fareType;
+
+	public String getFareType() {
+		return fareType;
+	}
+
+	public void setFareType(String fareType) {
+		this.fareType = fareType;
+	}
+	
+	
+}

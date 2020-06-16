@@ -1,0 +1,18 @@
+package com.javatpoint.Bmodel;
+
+public class BookModel {
+
+	public static void main(String[] args) {
+		
+	
+	String s = "Akh man";
+	
+	String[] s1 = s.split(" ");
+	
+	System.out.println(s1.toString());
+	  
+	
+	
+	System.out.println(s.trim().split(" "));
+	}
+	}

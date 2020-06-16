@@ -1,0 +1,50 @@
+package com.javatpoint.Bmodel;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+public class BookModel {
+
+	private int bookid;
+
+	@NotNull(message = "bookName can not be null")
+	@Size(min = 2, max = 35, message = "bookname must be 2-35 characters long.")
+	private String bookname;
+
+	private String author;
+
+	private int price;
+
+	public int getBookid() {
+		return bookid;
+	}
+
+	public void setBookid(int bookid) {
+		this.bookid = bookid;
+	}
+
+	public String getBookname() {
+		return bookname;
+	}
+
+	public void setBookname(String bookname) {
+		this.bookname = bookname;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+}

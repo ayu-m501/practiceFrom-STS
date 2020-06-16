@@ -1,0 +1,34 @@
+package com.javatpoint.Bmodel;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class PractCode {
+
+	public static void main(String[] args) 
+    {
+    
+		int[] array = {1,2,3,4,5,1,2};
+		
+
+System.out.println(Arrays.toString(array));
+		
+for(int i  = 0; i < array.length; i++) {
+	
+	for(int j = i+1; i < array.length; j++) {
+		
+		if(array[i] == array[j]) {
+			System.out.println(array[j]);
+		} 
+	}
+}
+		
+    }
+	}

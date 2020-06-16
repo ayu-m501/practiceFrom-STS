@@ -1,0 +1,13 @@
+package com.javatpoint.Bmodel;
+
+public class BookModel {
+
+	public static void main(String[] args) {
+		
+	
+	String s = "Akhilesh mandloi";
+	s.trim();
+	
+	System.out.println(s);
+	}
+	}

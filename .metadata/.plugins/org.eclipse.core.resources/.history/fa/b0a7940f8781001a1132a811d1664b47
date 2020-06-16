@@ -1,0 +1,24 @@
+package com.javatpoint.Bmodel;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+
+public class BookModel {
+	
+
+	public static void main(String[] args) {
+		
+	
+		List<String> names = new ArrayList<String>();
+		
+		String[] friend = {"ak, ka, pk, jk"};
+		
+		for(int i = 0; i < friend.length; i++) {
+				names.add(friend[i]);
+			String s = 	names.get(i);
+		}
+		System.out.println(s);
+				}
+}

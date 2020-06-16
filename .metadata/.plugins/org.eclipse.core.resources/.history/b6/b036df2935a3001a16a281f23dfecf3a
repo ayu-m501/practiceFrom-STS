@@ -1,0 +1,31 @@
+package com.javatpoint.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "book_details")
+public class BookDetail {
+
+	private String aboutBook;
+	
+	private String aboutBookAuthor;
+
+	public String getAboutBook() {
+		return aboutBook;
+	}
+
+	public void setAboutBook(String aboutBook) {
+		this.aboutBook = aboutBook;
+	}
+
+	public String getAboutBookAuthor() {
+		return aboutBookAuthor;
+	}
+
+	public void setAboutBookAuthor(String aboutBookAuthor) {
+		this.aboutBookAuthor = aboutBookAuthor;
+	}
+	
+	
+}

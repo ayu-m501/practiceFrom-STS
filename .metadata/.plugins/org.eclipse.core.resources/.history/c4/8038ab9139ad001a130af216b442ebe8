@@ -1,0 +1,58 @@
+package com.javatpoint.model;
+
+public class ProvisoCodeShareModel {
+
+	private String codeShare;
+
+	private Boolean viceVesaFlag;
+
+	private String provisoSection;
+
+	private Integer provisoSequenceNumber;
+
+	private String codeShareCXR;
+	
+	private String codeShareRecordNumber;
+
+	
+	public String getProvisoSection() {
+		return provisoSection;
+	}
+
+	public void setProvisoSection(String provisoSection) {
+		this.provisoSection = provisoSection;
+	}
+
+	public Integer getProvisoSequenceNumber() {
+		return provisoSequenceNumber;
+	}
+
+	public void setProvisoSequenceNumber(Integer provisoSequenceNumber) {
+		this.provisoSequenceNumber = provisoSequenceNumber;
+	}
+
+	public String getCodeShareCXR() {
+		return codeShareCXR;
+	}
+
+	public void setCodeShareCXR(String codeShareCXR) {
+		this.codeShareCXR = codeShareCXR;
+	}
+
+	public Boolean getViceVesaFlag() {
+		return viceVesaFlag;
+	}
+
+	public void setViceVesaFlag(Boolean viceVesaFlag) {
+		this.viceVesaFlag = viceVesaFlag;
+	}
+
+	public String getCodeShare() {
+		return codeShare;
+	}
+
+	public void setCodeShare(String codeShare) {
+		this.codeShare = codeShare;
+	}
+
+}

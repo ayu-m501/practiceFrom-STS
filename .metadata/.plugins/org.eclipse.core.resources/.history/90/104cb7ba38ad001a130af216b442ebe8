@@ -1,0 +1,25 @@
+package com.javatpoint.model;
+
+public class ProvisoCodeShareModel {
+
+	private String codeShare;
+
+	private Boolean viceVesaFlag;
+
+	public Boolean getViceVesaFlag() {
+		return viceVesaFlag;
+	}
+
+	public void setViceVesaFlag(Boolean viceVesaFlag) {
+		this.viceVesaFlag = viceVesaFlag;
+	}
+
+	public String getCodeShare() {
+		return codeShare;
+	}
+
+	public void setCodeShare(String codeShare) {
+		this.codeShare = codeShare;
+	}
+
+}

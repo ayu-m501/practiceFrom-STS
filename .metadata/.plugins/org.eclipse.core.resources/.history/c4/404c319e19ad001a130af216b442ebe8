@@ -1,0 +1,16 @@
+package com.javatpoint.model;
+
+public class ProvisoMainModel {
+
+	private String cxrCOde;
+
+	public String getCxrCOde() {
+		return cxrCOde;
+	}
+
+	public void setCxrCOde(String cxrCOde) {
+		this.cxrCOde = cxrCOde;
+	}
+	
+	
+}

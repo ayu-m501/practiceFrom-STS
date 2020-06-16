@@ -1,0 +1,20 @@
+package com.javatpoint.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class EnrichedATBP {
+
+	List<ATBPCoupon> listOfcoupon = new ArrayList<ATBPCoupon>();
+
+	public List<ATBPCoupon> getListOfcoupon() {
+		return listOfcoupon;
+	}
+
+	public void setListOfcoupon(List<ATBPCoupon> listOfcoupon) {
+		this.listOfcoupon = listOfcoupon;
+	}
+
+			
+	
+}

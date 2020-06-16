@@ -1,0 +1,27 @@
+package com.javatpoint.Bmodel;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class PractCode {
+
+	public static void main(String args[]) {
+	    char Char;
+	    int count;
+	    String a = "Hi my name is Rahul";
+	    a = a.toLowerCase();
+	    for (Char = 'a'; Char <= 'z'; Char++) {
+	        count = 0;
+	        for (int i = 0; i < a.length(); i++) {
+	            if (a.charAt(i) == Char) {
+	                count++;
+	            }
+	        }
+	        System.out.println("Number of occurences of " + Char + " is " + count);
+	    }
+	}}

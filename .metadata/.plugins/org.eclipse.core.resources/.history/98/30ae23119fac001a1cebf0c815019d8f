@@ -1,0 +1,26 @@
+package com.javatpoint.model;
+
+public class TicketLevelInfo {
+
+	private String ticketLevelPaxType;
+	
+	private String ticketIndicator;
+
+	public String getTicketLevelPaxType() {
+		return ticketLevelPaxType;
+	}
+
+	public void setTicketLevelPaxType(String ticketLevelPaxType) {
+		this.ticketLevelPaxType = ticketLevelPaxType;
+	}
+
+	public String getTicketIndicator() {
+		return ticketIndicator;
+	}
+
+	public void setTicketIndicator(String ticketIndicator) {
+		this.ticketIndicator = ticketIndicator;
+	}
+	
+	
+}

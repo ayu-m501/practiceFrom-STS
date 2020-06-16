@@ -1,0 +1,17 @@
+package com.javatpoint.controller;
+
+import java.util.List;
+
+import org.hibernate.service.internal.ProvidedService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.javatpoint.model.ProvisoMainModel;
+import com.javatpoint.service.ProvisoMainModelService;
+
+public class ProvisoMainModelCTL {
+
+	@Autowired
+	private ProvisoMainModelService provisoMainModelService;
+	
+	public List<ProvisoMainModel> 
+}

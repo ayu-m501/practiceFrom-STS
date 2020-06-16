@@ -1,0 +1,8 @@
+package com.javatpoint.model;
+
+public class TicketLevelInfo {
+
+	private String ticketLevelPaxType;
+	
+	private String ticketIndicator;
+}

@@ -1,0 +1,13 @@
+package com.javatpoint.Bmodel;
+
+import java.util.Arrays;
+
+public class BookModel {
+	
+
+	public static void main(String[] args) {
+		
+	
+		
+				}
+}

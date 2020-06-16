@@ -1,0 +1,10 @@
+package com.javatpoint.model;
+
+public class BookDetail {
+
+	private String aboutBook;
+	
+	private String aboutBookAuthor;
+	
+	
+}

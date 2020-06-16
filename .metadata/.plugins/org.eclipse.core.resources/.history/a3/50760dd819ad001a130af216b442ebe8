@@ -1,0 +1,84 @@
+package com.javatpoint.service;
+
+import java.text.SimpleDateFormat;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.javatpoint.exception.KeyToken;
+import com.javatpoint.model.ATBPCoupon;
+import com.javatpoint.model.EnrichedATBP;
+import com.javatpoint.model.ProvisoMainModel;
+
+public class SectionABProvisioCodeShareService {
+
+	@Autowired
+	ProvisoMainModelService provisoMainModelService;
+
+	private static Logger logger = LoggerFactory.getLogger(SectionABProvisioCodeShareService.class);
+
+	public final static String DATEPATTERN = "yyyy/mm/dd";
+
+	public EnrichedATBP setProvisioCodeShare(EnrichedATBP enrichedATBP) {
+
+		logger.debug("section a,b started");
+
+		int atbpCount = 0;
+
+		List<ATBPCoupon> atbpCouponList = enrichedATBP.getListOfcoupon();
+
+		for (int i = 0; i < atbpCouponList.size(); i++) {
+
+			Boolean singleAtbpFlag = false;
+			atbpCount++;
+			if (atbpCouponList.get(i).getAtbpValue() != null && atbpCount == 1) {
+				singleAtbpFlag = true;
+			}
+
+			if (!checkValidCoupon(enrichedATBP, i) && (!singleAtbpFlag)
+					&& (enrichedATBP.getListOfcoupon().get(i).getSrpMethod() != null
+							&& enrichedATBP.getListOfcoupon().get(i).getSrpMethod().equals("ICH"))
+					&& (enrichedATBP.getTicketLevelInfo().getTicketLevelPaxType() != null
+							&& enrichedATBP.getTicketLevelInfo().getTicketLevelPaxType().equals("in"))
+					&& (enrichedATBP.getTicketLevelInfo().getTicketLevelPaxType() != null
+							&& enrichedATBP.getTicketLevelInfo().getTicketLevelPaxType().equals("id"))
+					&& (enrichedATBP.getListOfcoupon().get(0).getFareBasisTranslation() == null || (enrichedATBP
+							.getListOfcoupon().get(0).getFareBasisTranslation().getDiscountCode() == null
+							|| !enrichedATBP.getListOfcoupon().get(0).getFareBasisTranslation().getDiscountCode()
+									.equals("in")))
+					&& (enrichedATBP.getListOfcoupon().get(0).getFareBasisTranslation() == null
+							|| (enrichedATBP.getListOfcoupon().get(0).getFareBasisTranslation().getFareType() == null
+									|| !enrichedATBP.getListOfcoupon().get(0).getFareBasisTranslation().getFareType()
+											.equals("id")))) {
+
+			List<ProvisoMainModel> provisoMainModelSectionA = getSerialNumberForcorrespondingCoupon(enrichedATBP, i, "A");
+			
+			
+			}
+
+		}
+		return enrichedATBP;
+	}
+
+	public boolean checkValidCoupon(EnrichedATBP enrichedATBP, int i) {
+
+		return (enrichedATBP.getTicketLevelInfo().getTicketIndicator().equals(KeyToken.INVOL_TICKET)
+				&& enrichedATBP.getListOfcoupon().get(i).getCouponType() != null
+				&& enrichedATBP.getListOfcoupon().get(i).getCouponType().equals(KeyToken.Y_COUPON));
+
+	}
+
+	public List<ProvisoMainModel> getSerialNumberForcorrespondingCoupon(EnrichedATBP enrichedATBP, int i,
+			String section) {
+
+		SimpleDateFormat formatter = new SimpleDateFormat(DATEPATTERN);
+
+		String strDate = formatter.format(enrichedATBP.getTicketLevelInfo().getTicketIssueDate());
+		List<ProvisoMainModel> provisoMainModel = provisoMainModelService
+				.search(enrichedATBP.getListOfcoupon().get(i).getCxr(), strDate, null, section, null);
+		return (provisoMainModel != null && !provisoMainModel.isEmpty() ? provisoMainModel : null);
+
+	}
+}

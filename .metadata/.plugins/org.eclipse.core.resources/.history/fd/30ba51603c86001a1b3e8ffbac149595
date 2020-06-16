@@ -1,0 +1,48 @@
+package com.javatpoint.Bmodel;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class PractCode {
+
+	public static void main(String args[]) {
+
+		String s = "javaisjava";
+		int cnt = 0;
+		char[] ch = s.toCharArray();
+
+		for (int i = 0; i < s.length(); i++) {
+			for (int j = i + 1; j < s.length(); j++) {
+
+				Map<Character, Integer> map = new HashMap<Character, Integer>();
+				
+				if(map.containsKey(ch[j])) {
+				if (ch[i] == ch[j]) {
+					map.put(ch[j], map.get(ch[j]) + 1);
+				}
+				}else {
+					map.put(ch[j], 1);
+				}	
+					
+			Set<Character> set = 		map.keySet();
+			
+			for(Character sn :set) {
+				System.out.println(sn);
+				System.out.println(map.get(sn));
+			}
+					
+					
+					break;
+				}
+
+			}
+			
+		}
+	}
+}

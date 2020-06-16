@@ -1,0 +1,82 @@
+package com.javatpoint.Bmodel;
+
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
+public class BookModel {
+
+	public static void main(String[] args)
+	{
+	String s="xyxyabcdefff";	
+	//allSubString(s);
+	System.out.println("result of find"+find(s));
+	}
+	
+	
+	public static String find(String s)
+	{
+		List<String> allSubsring=allSubString(s);
+		
+		Set<String> main =new LinkedHashSet<String>();
+		for(String temp:allSubsring)
+		{
+			boolean a = false;
+			for(int i=0;i<temp.length();i++)
+			{ 
+				for(int k=temp.length()-1;k>i;k--)
+				{
+					if(temp.charAt(k)==temp.charAt(i))
+						a=true;
+				}
+			}
+			if(!a)
+			{
+				main.add(temp);
+			}
+		}
+		/*for(String x:main)
+		{
+		System.out.println(x);	
+		}*/
+		String res=null;
+		int min=0,max=s.length();
+		for(String temp:main)
+		{
+		if(temp.length()>min&&temp.length()<max)
+		{
+			min=temp.length();
+			res=temp;
+		}
+		}
+		System.out.println(min+"ha ha ha"+res+"he he he");
+		return res;
+		
+	}
+	//substrings left to right ban rahi hai
+
+	
+	
+	
+private static List<String> allSubString(String str) {
+	List<String> all=new ArrayList<String>();
+	int c=0;
+	for (int i = 0; i < str.length(); i++) {
+		for (int j = i+1; j <= str.length(); j++) {
+			if (!all.contains(str.substring(j, i + 1)))
+			{
+				c++;
+				all.add(str.substring(j, i + 1));
+			}
+		}
+	}
+	for(String temp:all)
+	{
+		System.out.println("substring :-"+temp);
+	}
+	System.out.println("count"+c);
+	return all;
+}
+		
+}

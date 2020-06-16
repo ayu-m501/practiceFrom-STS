@@ -1,0 +1,109 @@
+package com.javatpoint.service;
+
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.aop.ThrowsAdvice;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.javatpoint.exception.BusinessException;
+import com.javatpoint.exception.CommonExcetion;
+import com.javatpoint.exception.ExceptionCode;
+import com.javatpoint.model.Books;
+import com.javatpoint.repository.BooksRepository;
+
+//defining the business logic  
+@Service
+public class BooksService {
+	@Autowired
+	BooksRepository booksRepository;
+
+	public static final String FROMDATELESSTODATE = "effectiveFromDate should be less than effectiveToDate";
+
+//getting all books record by using the method findaAll() of CrudRepository  
+	public List<Books> getAllBooks() {
+		List<Books> books = new ArrayList<Books>();
+		booksRepository.findAll().forEach(books1 -> books.add(books1));
+		return books;
+	}
+
+//getting a specific record by using the method findById() of CrudRepository  
+	public Books getBooksById(int id) {
+		return booksRepository.findById(id).get();
+	}
+
+//saving a specific record by using the method save() of CrudRepository  
+	public void saveOrUpdate(Books books) throws ParseException {
+
+	List<Books> list = 	getAllBooks();
+	 
+	for (int i = 0; i < list.size(); i++) {
+		String	 bookName1 = 	list.get(i).getBookname();
+		String	 bookName2 =	books.getBookname();
+	 if(!bookName1.equals(bookName2)) {
+		throw new BusinessException("BookName already stored in database");
+		}
+	}
+	
+	
+		Date effectiveFromD = new SimpleDateFormat("mm/dd/yyyy").parse(books.getEffectiveFromDate());
+		Date effectiveT = new SimpleDateFormat("mm/dd/yyyy").parse(books.getEffectiveToDate());
+
+		camelCase(books);
+		if (books.getBookname().equals(books.getAuthor())) {
+			throw new BusinessException("bookName and author cant be same");
+
+		}
+		if (books.getAuthor().length() > 10) {
+			books.getExceptionInfo()
+					.add(CommonExcetion.throwParamException(ExceptionCode.EXCEPTIONCODE002, books.getAuthor(), null));
+		} else if (effectiveFromD.after(effectiveT)) {
+			// throw new BusinessException(FROMDATELESSTODATE);
+			books.getExceptionInfo().add(CommonExcetion.throwParamException(ExceptionCode.EXCEPTIONCODE003,
+					books.getEffectiveFromDate(), books.getEffectiveToDate()));
+		} else {
+			books.setCreatedDate(new Date());
+			booksRepository.save(books);
+		}
+	}
+
+	public void camelCase(Books books) {
+		String newS = "";
+		String newS1 = "";
+		String newS2 = "";
+		String bookName = books.getBookname();
+		if (bookName != null || !bookName.isEmpty()) {
+
+			String[] splitBN = bookName.split(" ");
+
+			for (String sbn : splitBN) {
+				if (sbn == splitBN[0]) {
+					newS = sbn.substring(0, 1).toUpperCase() + sbn.substring(1);
+				} else if (sbn == splitBN[1]) {
+					newS1 = sbn.substring(0, 1).toUpperCase() + sbn.substring(1);
+				}
+
+			}
+			newS2 = newS + " " + newS1;
+			books.setBookname(newS2);
+		} else {
+			books.getExceptionInfo().add(CommonExcetion.throwNonParamException(ExceptionCode.EXCEPTIONCODE001));
+		}
+
+	}
+
+	public void delete(int id) {
+		booksRepository.deleteById(id);
+	}
+
+//updating a record  
+	public void update(Books books, int bookid) {
+		booksRepository.save(books);
+	}
+}

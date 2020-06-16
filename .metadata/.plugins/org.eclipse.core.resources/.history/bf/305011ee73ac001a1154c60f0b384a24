@@ -1,0 +1,12 @@
+package com.javatpoint.model;
+
+public class ATBPCoupon {
+
+	private Integer atbpValue;
+	
+	private String srpMethod;
+	
+	private String cxr;
+	
+	private String couponType;
+}
