@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,8 @@ public class BooksService implements Serializable {
 	@Autowired
 	OneCountryService oneCountryService;
 
+	private static Logger logger = LoggerFactory.getLogger(SectionABProvisioCodeShareService.class);
+
 	public static final String FROMDATELESSTODATE = "effectiveFromDate should be less than effectiveToDate";
 
 //getting all books record by using the method findaAll() of CrudRepository  
@@ -48,13 +52,8 @@ public class BooksService implements Serializable {
 
 //saving a specific record by using the method save() of CrudRepository  
 	public void saveOrUpdate(Books books) throws ParseException {
-		System.out.println("Add service started");
-		
-		System.out.println("77777777777777");
 
-		System.out.println("*********");
-		
-		System.out.println("second try");
+		logger.debug("ADD service started");
 		// check Sequence number
 		checkSequenceNumber(books);
 
